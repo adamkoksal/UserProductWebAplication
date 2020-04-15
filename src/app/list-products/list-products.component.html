@@ -1,0 +1,21 @@
+<button class="btn btn-primary" *ngIf="_isManager()" routerLink='new'>Add Product</button>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let column of columns">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | async">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.quantity }}</td>
+        <td *ngIf="_isManager()">
+          <a [routerLink]="['/admin/products', product.id ]" >Edit</a>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>

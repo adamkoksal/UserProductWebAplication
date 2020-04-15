@@ -1,0 +1,16 @@
+<div class="list-group">
+    <a
+    routerLink="/admin/users/"
+    class="list-group-item list-group-item-action"
+    [class.active]="!condition"
+    >Approved Users</a>
+
+    <a
+    routerLink="/admin/users/"
+    [queryParams]="{ condition: 'unapproved' }"
+    class="list-group-item list-group-item-action"
+    [class.active]="condition"
+    >Unapproved Users</a>
+    
+</div>
+

@@ -1,0 +1,44 @@
+<form #f="ngForm" (ngSubmit)= "save(f.value)">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input [(ngModel)]="user.username" class="form-control" name="username" #name="ngModel"  id="username" type="text" required minlength="3" maxlength="10">  
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+            <div *ngIf="name.errors.required">Username is required.</div>  
+            <div *ngIf="name.errors.minlength">Username should be minimum 3 chars.</div> 
+        </div>    
+    </div>
+
+    <div class="form-group">
+        <label for="pasword">Password</label>
+        <input [(ngModel)]="user.password" class="form-control" name="password" #pass="ngModel" id="password" type="password" required minlength="5" maxlength="10">
+        <div *ngIf="pass.touched && pass.invalid" class="alert alert-danger">
+            <div *ngIf="pass.errors.required">Password is required.</div>
+            <div *ngIf="pass.errors.minlength">Password should be minimum 5 chars.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="manager">Is user manager?</label>
+        <select [(ngModel)]="user.manager" name="manager" id="manager" class="form-control" required>
+            <option value=true>Manager</option>
+            <option value=false>Not Manager</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input 
+            [(ngModel)]="user.approved" #approved="ngModel"
+            type="checkbox" 
+            id="approved" name="approved" 
+            required
+            > This is an approved user.
+        </label>
+        <div *ngIf="approved.touched && approved.invalid" class="alert alert-danger">User should be approved</div> 
+    </div>
+
+
+
+    <button class="btn btn-primary" [disabled]="!f.valid" (click)="nothing()">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+</form>

@@ -1,0 +1,40 @@
+/* .a {
+    margin-top: 73px;
+    margin-left: -60px;
+} */
+
+.btn-primary {
+    margin: 5vh 0;
+    float: right;
+}
+
+.table {
+    margin-bottom: 25vh;
+}
+
+#a {
+    color: green;
+}
+
+#b {
+    margin-left: 15px;
+    color: red;    
+}
+
+.users {
+    display: grid;
+    gap: 5vh;
+    grid-template-columns: 1fr 3fr;
+}
+
+@media screen and (max-width: 850px) {
+    .users {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-primary {
+        margin: 0 0;
+        margin-bottom: 5vh;
+        float: right;
+    }
+}

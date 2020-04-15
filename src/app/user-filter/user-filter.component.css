@@ -1,0 +1,13 @@
+.list-group {
+    cursor: pointer;
+}
+
+div {
+    margin: 5vh 0;
+}
+
+@media screen and (max-width: 850px) {
+    div {
+        margin: 0;
+    }
+}

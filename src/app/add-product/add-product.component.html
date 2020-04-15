@@ -1,0 +1,62 @@
+<form #f="ngForm" (ngSubmit)= "save(f.value)">
+
+    <div class="form-group">
+        <label for="name">Product Name</label>
+        <input 
+        [(ngModel)]="product.name" #name="ngModel"
+        type="text" class="form-control" name="name" id="name" required minlength="3">
+        <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+            <div *ngIf="name.errors.required">Product name is required.</div>
+            <div *ngIf="name.errors.minlength">Product name should be at least 3 characters.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Product Category</label>
+        <select 
+        [(ngModel)]="product.category" name="category" id="category"
+        class="form-control" required>
+            <option value=1>One</option>
+            <option value=2>Two</option>
+            <option value=3>Three</option>
+            <option value=4>Four</option>
+            <option value=5>Five</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Product Price</label>
+        <input 
+        [(ngModel)]="product.price" #price="ngModel"
+        type="number" class="form-control" id="price" name="price" required>
+        <div *ngIf="price.touched && price.invalid" class="alert alert-danger">
+            Price is required.
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="quantity">Product Quantity</label>
+        <input 
+        [(ngModel)]="product.quantity" #quantity="ngModel"
+        id="quantity" name="quantity"
+        type="number" class="form-control" required>
+        <div *ngIf="quantity.touched && quantity.invalid" class="alert alert-danger">Quantity is required.</div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input 
+            [(ngModel)]="product.check" #check="ngModel"
+            type="checkbox" id="check" name="check" required
+            > I double checked everything.
+        </label>
+        <div *ngIf="check.touched && check.invalid" class="alert alert-danger">You cannot submit if you have not double checked</div> 
+    </div>
+
+    
+    
+    
+    <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+ 
+</form>

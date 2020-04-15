@@ -1,0 +1,42 @@
+<div >
+  <div class="users">
+    <div>
+      <user-filter [condition]="condition"></user-filter>
+    </div>
+
+    <div>    
+      <button class="btn btn-primary" routerLink="new">Add User</button>
+      <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let column of columns">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUsers" >
+            <ng-container>  
+              <td>{{ user.username }}</td>
+              <td>{{ user.manager }}</td>
+              <td>
+                <a *ngIf="user.approved" [routerLink]="['/admin/users', user.id ]" >Edit</a>
+                <a *ngIf="!user.approved" id="a"
+                href="javascript:void(0);"               
+                (click)="approve(user)" >Approve</a>
+                
+                <a *ngIf="!user.approved" id="b"
+                href="javascript:void(0);"               
+                (click)="decline(user)" >Decline</a>
+                
+                
+              </td>
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+  </div>
+</div>
+
+
